@@ -4,7 +4,6 @@ import MessageSender from './MessageSender';
 import Post from './Post';
 import StoryReel from './StoryReel';
 
-
 const Feed: React.FC = function () {
 
 
