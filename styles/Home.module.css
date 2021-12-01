@@ -466,7 +466,28 @@
     flex-direction: column;
 }
 
+.UserType {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+}
 
+.publicUserType {
+    float: left;
+}
+
+.publicUserButt {
+    width: 300px;
+    background-color: #2e81f4;
+    color: #eff2f5;
+    font-weight: 800;
+}
+
+.hsuUserType {
+    margin-top: 30px;
+}
 
 
 
