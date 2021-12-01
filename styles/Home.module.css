@@ -475,14 +475,18 @@
 }
 
 .publicUserType {
-    float: left;
     color: rgb(37, 158, 77);
 }
-
 
 .hsuUserType {
     margin-top: 30px;
     color: rgb(37, 158, 77);
+}
+
+.backLogin {
+    margin-top: 30px;
+    font-size: 10px;
+    color: rgb(179, 29, 29);
 }
 
 
