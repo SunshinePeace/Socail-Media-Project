@@ -10,7 +10,7 @@ import Widgets from './Components/Widgets'
 
 export default function Home() {
 
-    const user = null;
+    const user = "ll";
 
     return (
       <div className={styles.app}>
