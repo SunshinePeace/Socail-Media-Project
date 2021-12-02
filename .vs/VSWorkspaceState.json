@@ -3,8 +3,8 @@
     "",
     "\\pages",
     "\\pages\\Components",
-    "\\styles"
+    "\\pages\\Components\\Useless"
   ],
-  "SelectedNode": "\\pages\\Components\\firebase.ts",
+  "SelectedNode": "\\pages\\index.tsx",
   "PreviewInSolutionExplorer": false
 }
