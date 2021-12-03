@@ -67,10 +67,8 @@ const SignUp: React.FC = function () {
                 setRegistering(false)
 
             })
-
-
-
-        */
+            
+            */
     }       
 
 
@@ -128,6 +126,7 @@ const SignUp: React.FC = function () {
                         disabled={registering}
                         color="secondary"
                         onClick={() => TraditionalSignUp()}
+                        href="../Components/LoginPage"
                     >
                         Sign Up
                     </Button>
