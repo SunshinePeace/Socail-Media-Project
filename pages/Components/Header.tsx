@@ -41,6 +41,7 @@ const Header: React.FC = function () {
         setAnchorEl(null);
     }
 
+    const preventDefault = event => event.preventDefault();
 
 
     const [active, setActive] = React.useState(false);
@@ -103,6 +104,10 @@ const Header: React.FC = function () {
                     <NotificationsActiveIcon />
                 </IconButton>
 
+                <IconButton href= "../Components/PersonalSetting">
+                    <SettingsIcon color="error" />
+                </IconButton>
+
                 <IconButton
                     id = 'basic-button'
                     aria-controls="basic-menu"
@@ -126,7 +131,7 @@ const Header: React.FC = function () {
                     }}
                 >
                     <MenuItem onClick={handleClose}>
-                            <SettingsIcon />
+                        <SettingsIcon />
                             Setting</MenuItem>
                         
 
