@@ -1,4 +1,3 @@
-import { Unsubscribe } from "@mui/icons-material";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useContext, useEffect } from "react";
 import { createContext, useState } from "react";

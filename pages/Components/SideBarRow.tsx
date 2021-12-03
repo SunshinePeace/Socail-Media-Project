@@ -1,11 +1,12 @@
 import { Avatar } from '@mui/material'
 import React from 'react'
 import styles from '../../styles/Home.module.css'
+import { useAuth } from './AuthContexts';
 
 
 function SideBarRow({ src, Icon, title }) {
 
-
+    const { currentUser } = useAuth();
     return (
 
         <div className={styles.sidebarRow}>
