@@ -515,6 +515,26 @@
     margin-bottom: 10px;
 }
 
+.publicUserType {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.hsuUserType {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.backLogin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.UserType {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .png {
     width: 250px;
     height: 200px;
