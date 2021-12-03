@@ -99,7 +99,7 @@ const LoginPage: React.FC = function () {
                         Sign In
                     </Button>
                     <p>Do not have account?
-                        <Link href="../Components/SignUp"> Sign Up </Link>
+                        <Link href="../Components/Choice"> Sign Up </Link>
                     </p>
                     <ErrorText error={error} />
                     <p> or </p>

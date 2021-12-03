@@ -489,6 +489,20 @@
     justify-content: center;
 }
 
+.loginpage_SID {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.loginpage_program {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.loginpage_Year {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 .loginpage_email {
     margin-top: 10px;
@@ -533,6 +547,10 @@
 .UserType {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.BtnJumpPage {
+    background-color: plum;
 }
 
 .png {
