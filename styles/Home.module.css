@@ -490,7 +490,7 @@
 }
 
 
-    .loginpage_email {
+.loginpage_email {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -500,6 +500,20 @@
     margin-bottom: 10px;
 }
 
+.loginpage_user {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.loginpage_confirm {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.SignUpP {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 .png {
     width: 250px;

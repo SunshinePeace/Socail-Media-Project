@@ -76,58 +76,73 @@ const SignUp: React.FC = function () {
 
 
     return (
-        <div className={styles.loginpage}>
-            <p>Registery Page</p>
-            <div>
 
-                    <TextField
-                    id="user"
-                    onChange={x => setUser(x.target.value)}
-                    value={user}
-                    placeholder="Enter Username"
-                    variant="standard"     />
-                
-                <TextField type="email"
-                    id="email"
-                    onChange={x => setEmail(x.target.value)}
-                    value={email}
-                    placeholder="Enter Email"
-                    variant="standard" />
-                <TextField
-                    autoComplete="new-password"
-                    type="password"
-                    id="password"
-                    onChange={x => setPassword(x.target.value)}
-                    value={password}
-                    placeholder="Enter Password"
-                    variant="standard" />
-                <TextField
-                    autoComplete="new-password"
-                    type="password"
-                    id="confirm"
-                    onChange={x => setConfirm(x.target.value)}
-                    value={confirm}
-                    placeholder="Enter Password"
-                    variant="standard" />
-            </div>
+        <body className={styles.loginbody}>
 
-            <Button
-                disabled={registering}
-                color="secondary"
-                onClick={() => TraditionalSignUp()}
-                >
-                Sign Up
-            </Button>
-            <small>
-                <p className='m-1 text-center'>Already have an account?
-                    <Link href="../Components/LoginPage"> Sign In </Link>
-                </p>
-            </small>
-            <ErrorText error={error} />
+            <div className={styles.loginpage}>
 
+                <div className={styles.flexbox}>
+                    <p className={styles.SignUpP}>Registery Page</p>
 
+                    <div className={styles.loginpage_user}>
+                        <TextField
+                            id="user"
+                            onChange={x => setUser(x.target.value)}
+                            value={user}
+                            placeholder="Enter Username"
+                            variant="standard" />
+                    </div>
+
+                    <div className={styles.loginpage_email}>
+                        <TextField type="email"
+                            id="email"
+                            onChange={x => setEmail(x.target.value)}
+                            value={email}
+                            placeholder="Enter Email"
+                            variant="standard" />
+                    </div>
+
+                    <div className={styles.loginpage_pw}>
+                        <TextField
+                            autoComplete="new-password"
+                            type="password"
+                            id="password"
+                            onChange={x => setPassword(x.target.value)}
+                            value={password}
+                            placeholder="Enter Password"
+                            variant="standard" />
+                    </div>
+
+                    <div className={styles.loginpage_confirm}>
+                        <TextField
+                            autoComplete="new-password"
+                            type="password"
+                            id="confirm"
+                            onChange={x => setConfirm(x.target.value)}
+                            value={confirm}
+                            placeholder="Enter Password"
+                            variant="standard" />
+                    </div>
+
+                    <Button
+                        disabled={registering}
+                        color="secondary"
+                        onClick={() => TraditionalSignUp()}
+                    >
+                        Sign Up
+                    </Button>
+                    <small>
+                        <p className='m-1 text-center'>Already have an account?
+                            <Link href="../Components/LoginPage"> Sign In </Link>
+                        </p>
+                    </small>
+                    <ErrorText error={error} />
+
+                </div>
+            
         </div>
 
+        </body>
 
     )
 }
