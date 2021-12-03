@@ -23,7 +23,7 @@ const Header: React.FC = function () {
 
     //Can be set globally Later   
 
-    const { logout } = useAuth()
+    const { currentUser, logout } = useAuth()
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -38,11 +38,6 @@ const Header: React.FC = function () {
         logout()
         setAnchorEl(null);
     }
-
-
-
-
-
 
 
     const [active, setActive] = React.useState(false);
@@ -89,8 +84,8 @@ const Header: React.FC = function () {
 
             <div className={styles.header__right}>
                 <div className={styles.header__info}>
-                    <Avatar />
-                    <h4>G</h4>
+                    <Avatar src={currentUser.photoURL} />
+                    <h4>{currentUser.displayName}</h4>
                 </div>
 
                 <IconButton>
@@ -123,6 +118,7 @@ const Header: React.FC = function () {
                         'aria-labelledby': 'basic-button',
                     }}
                 >
+                    <MenuItem onClick={handleClose}>Setting</MenuItem>
                     <MenuItem onClick={handleSignOut}>Logout</MenuItem>
                 </Menu>
 

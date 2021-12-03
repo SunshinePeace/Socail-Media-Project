@@ -4,6 +4,7 @@ import styles from '../../styles/Home.module.css'
 import VideocamIcon from '@mui/icons-material/Videocam';
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import { useAuth } from './AuthContexts';
 
 
 
@@ -11,6 +12,7 @@ const MessageSender: React.FC = function () {
 
     const [input, setInput] = useState('');
     const [imageUrl, setImageUrl] = useState('');
+    const { currentUser } = useAuth()
 
     const handleSubmit = e => {
 
@@ -27,13 +29,13 @@ const MessageSender: React.FC = function () {
         <div className={styles.MessageSender}>
 
             <div className={styles.MessageSender__top}>
-                <Avatar />
+                <Avatar src={currentUser.photoURL} />
                 <form>
                     <input
                         value={input}
                         onChange={(x) => setInput(x.target.value)}
                         type="text"
-                        placeholder="What's on your mind"
+                        placeholder={`What's on your mind, ${currentUser.displayName}?`}
                         className={styles.MessageSender__input} />
                     <input
                         value={imageUrl}

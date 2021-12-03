@@ -11,7 +11,7 @@ function SideBarRow({ src, Icon, title }) {
 
         <div className={styles.sidebarRow}>
             <div className={styles.sidebarRow__MuiSvgIcon}> { /*Bug fixed 2*/}
-                {src && <Avatar src={src} />}            
+                {src && <Avatar src={currentUser.photoURL} />}
                 {Icon && <Icon />}
             </div>
             <h4>{title}</h4>            

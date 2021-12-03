@@ -8,12 +8,14 @@ import ChatIcon from '@mui/icons-material/Chat';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useAuth } from './AuthContexts';
 
 const SideBar: React.FC = function () {
 
+    const { currentUser } = useAuth();
     return (
         <div className={styles.sidebar}>
-            <SideBarRow src='' Icon={""} title="SunshinePeace" />
+            <SideBarRow src={currentUser.photoURL} Icon={""} title={currentUser.displayName} />
             <SideBarRow src ="" Icon={LocalHospitalIcon} title="COVID-19 Information Center" />
             <SideBarRow src=""Icon={EmojiFlagsIcon} title = "Pages" />
             <SideBarRow src=""Icon={PeopleIcon} title="Friends"/>
