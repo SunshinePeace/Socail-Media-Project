@@ -3,14 +3,12 @@ import { TextField } from '@mui/material';
 import React, { useRef } from 'react';
 import { useState } from 'react';
 import styles from '../../styles/Home.module.css'
-import { signup } from "./AuthContexts";
+import { useAuth } from "./AuthContexts";
 import logging from './Utils/logging';
 import { Link } from '@mui/material';
 import ErrorText from './Utils/Error';
 import { addDoc, collection, doc } from 'firebase/firestore';
 import database, { auth } from './firebase';
-import { useAuth } from './Utils/UserState';
-
 
 const SignUp: React.FC = function () {
 
@@ -21,55 +19,69 @@ const SignUp: React.FC = function () {
     const [confirm, setConfirm] = useState<string>("");
     const [error, setError] = useState<string>("");
 
+    const { register } = useAuth()
 
     const TraditionalSignUp = () => {
 
 
 
-        /*
+        
         if (error !== "") setError('');
 
-        setRegistering(true)
 
-        signup(email, password)
-            .then(result => {
-                addDoc(collection(database, 'Users'), {
-                    UserName: user,
-                    EmailAddress: email,
-                    Password: password
+        if (password !== confirm) {
 
-                });
+            setError("Passwords do not match")
+        }
 
-                logging.info(result)
+        else {
+            setRegistering(true)
+
+            register(email, password)
+                .then(result => {
+                    addDoc(collection(database, 'Users'), {
+                        UserName: user,
+                        EmailAddress: email,
+                        Password: password
+
+                    });
+
+                    logging.info(result)
 
 
 
 
-            })
-            .catch(error => {
-                logging.error(error);
+                })
+                .catch(error => {
+                    logging.error(error);
 
-                if (error.code.includes('auth/weak-password')) {
-                    setError("Please enter a stronger password")
+                    if (error.code === 'auth/weak-password') {
+                        setError("Please enter a stronger password")
 
-                }
+                    }
 
-                else if (error.code.includes('auth/email-already-in-use')) {
+                    else if (error.code === 'auth/email-already-in-use') {
 
-                    setError("Email already in use.")
+                        setError("Email already in use.")
 
-                }
+                    }
 
-                else {
-                    setError('Error in this moment. Please try it later.')
-                }
+                    else {
+                        setError('Error in this moment. Please try it later.')
+                    }
 
-                setRegistering(false)
+                    setRegistering(false)
 
-            })
+                })
+        }
+        }
+
+
+
+  
             
-            */
-    }       
+            
+           
 
 
 
@@ -118,7 +130,7 @@ const SignUp: React.FC = function () {
                             id="confirm"
                             onChange={x => setConfirm(x.target.value)}
                             value={confirm}
-                            placeholder="Enter Password"
+                            placeholder="Confirmation Password"
                             variant="standard" />
                     </div>
 

@@ -3,13 +3,11 @@ import { TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import React, { useRef, useState } from 'react';
 import styles from '../../styles/Home.module.css'
-import { signin, signup } from "./AuthContexts";
+import { useAuth } from "./AuthContexts";
 import ErrorText from './Utils/Error';
 import logging from './Utils/logging';
-import { BrowserRouter as Router  } from 'react-router-dom';
-import SignUp from './SignUp';
-import { useStateValue } from './Useless/StateProvider';
-import { actionTypes } from './Useless/Reducer';
+import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from './firebase';
 // import { useCookies } from 'react-cookie';
 
 
@@ -24,9 +22,16 @@ const LoginPage: React.FC = function () {
     const [error, setError] = useState<string>("");
    // const [cookies, setCookie] = useCookies(['user']);
 
+    const { login } = useAuth();
 
-
-
+    const signInWithGoogle = () => {
+        signInWithPopup(auth, provider)
+            .then(result => {
+                console.log(result)
+            }).catch(error => {
+                alert(error.message)
+            })
+    }
 
 
 
@@ -34,10 +39,11 @@ const LoginPage: React.FC = function () {
         if (error !== '') setError('')
         
         setAuthenticating(true);
-        signin(email, password)
+        login(email, password)
             .then(result => {
+
                 logging.info(result);
-                localStorage.setItem('Email', email);
+                
 
 
 
@@ -96,6 +102,9 @@ const LoginPage: React.FC = function () {
                         <Link href="../Components/SignUp"> Sign Up </Link>
                     </p>
                     <ErrorText error={error} />
+                    <p> or </p>
+                    <Button type="submit" onClick={signInWithGoogle}>Sign In With Google </Button>
+
 
             </div>
 
