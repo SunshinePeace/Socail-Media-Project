@@ -92,6 +92,7 @@ const HSUSignUp: React.FC = function () {
             <div className={styles.loginpage}>
 
                 <div className={styles.flexbox}>
+
                     <p className={styles.SignUpP}>Registery Page</p>
 
                     <div className={styles.loginpage_SID}>
@@ -103,120 +104,84 @@ const HSUSignUp: React.FC = function () {
                             variant="standard" />
                     </div>
 
-                    <div className={styles.loginpage_program}>
+                    <div className={styles.loginpage_programme}>
+                        <TextField type="programme"
+                            id="programme"
+                            onChange={x => setProgramme(x.target.value)}
+                            value={programme}
+                            placeholder="Enter Programme"
+                            variant="standard" />
+                    </div>
+
+                    <div className={styles.loginpage_Year}>
                         <TextField
-                            <div className={styles.loginpage_user}>
-                            <TextField
-                                id="user"
-                                onChange={x => setUser(x.target.value)}
-                                value={user}
-                                placeholder="Enter Username"
-                                variant="standard" />
+                            id="year"
+                            onChange={x => setYear(x.target.value)}
+                            value={year}
+                            placeholder="Enter Year of entrance "
+                            variant="standard" />
                     </div>
 
-                        <div className={styles.loginpage_email}>
-                            <TextField type="email"
-                                id="email"
-                                onChange={x => setEmail(x.target.value)}
-                                value={email}
-                                placeholder="Enter Email"
-                                variant="standard" />
-                        </div>
-
-                        <div className={styles.loginpage_programme}>
-                            <TextField type="programme"
-                                id="programme"
-                                onChange={x => setProgramme(x.target.value)}
-                                value={programme}
-                                placeholder="Enter Programme"
-                                variant="standard" />
-                        </div>
-
-                        <div className={styles.loginpage_Year}>
-                            <TextField
-                                id="year"
-                                onChange={x => setYear(x.target.value)}
-                                value={year}
-                                placeholder="Enter Year of entrance "
-                                variant="standard" />
-                        </div>
-
-                        <div className={styles.loginpage_user}>
-                            <TextField
-                                id="user"
-                                onChange={x => setUser(x.target.value)}
-                                value={user}
-                                placeholder="Enter Username"
-                                variant="standard" />
-                        </div>
-
-                        <div className={styles.loginpage_email}>
-                            <TextField type="email"
-                                id="email"
-                                onChange={x => setEmail(x.target.value)}
-                                value={email}
-                                placeholder="Enter Email"
-
-                    <div className={styles.loginpage_year}>
-                            <TextField type="year"
-                                id="year"
-                                onChange={x => setYear(x.target.value)}
-                                value={year}
-                                placeholder="Enter Year of entrance"
-                                variant="standard" />
-                        </div>
-
-                        <div className={styles.loginpage_SID}>
-                            <TextField type="SID"
-                                id="SID"
-                                onChange={x => setSID(x.target.value)}
-                                value={SID}
-                                placeholder="Enter Student ID"
-                                variant="standard" />
-                        </div>
-
-                        <div className={styles.loginpage_pw}>
-                            <TextField
-                                autoComplete="new-password"
-                                type="password"
-                                id="password"
-                                onChange={x => setPassword(x.target.value)}
-                                value={password}
-                                placeholder="Enter Password"
-                                variant="standard" />
-                        </div>
-
-                        <div className={styles.loginpage_confirm}>
-                            <TextField
-                                autoComplete="new-password"
-                                type="password"
-                                id="confirm"
-                                onChange={x => setConfirm(x.target.value)}
-                                value={confirm}
-                                placeholder="Confirmation Password"
-                                variant="standard" />
-                        </div>
-
-                        <Button
-                            disabled={registering}
-                            color="secondary"
-                            onClick={() => TraditionalSignUp()}
-                            href="../Components/LoginPage"
-                        >
-                            Sign Up
-                        </Button>
-                        <small>
-                            <p className='m-1 text-center'>Already have an account?
-                                <Link href="../Components/LoginPage"> Sign In </Link>
-                            </p>
-                        </small>
-                        <ErrorText error={error} />
-
+                    <div className={styles.loginpage_user}>
+                        <TextField
+                            id="user"
+                            onChange={x => setUser(x.target.value)}
+                            value={user}
+                            placeholder="Enter Username"
+                            variant="standard" />
                     </div>
+
+                    <div className={styles.loginpage_email}>
+                        <TextField type="email"
+                            id="email"
+                            onChange={x => setEmail(x.target.value)}
+                            value={email}
+                            placeholder="Enter Email"
+                            variant="standard" />
+                    </div>
+
+                    <div className={styles.loginpage_pw}>
+                        <TextField
+                            autoComplete="new-password"
+                            type="password"
+                            id="password"
+                            onChange={x => setPassword(x.target.value)}
+                            value={password}
+                            placeholder="Enter Password"
+                            variant="standard" />
+                    </div>
+
+                    <div className={styles.loginpage_confirm}>
+                        <TextField
+                            autoComplete="new-password"
+                            type="password"
+                            id="confirm"
+                            onChange={x => setConfirm(x.target.value)}
+                            value={confirm}
+                            placeholder="Confirmation Password"
+                            variant="standard" />
+                    </div>
+
+                    <Button
+                        disabled={registering}
+                        color="secondary"
+                        onClick={() => TraditionalSignUp()}
+                        href="../Components/LoginPage"
+                    >
+                        Sign Up
+                    </Button>
+                    <small>
+                        <p className='m-1 text-center'>Already have an account?
+                            <Link href="../Components/LoginPage"> Sign In </Link>
+                        </p>
+                    </small>
+                    <ErrorText error={error} />
 
                 </div >
 
-        </body >
+            </div >
+
+        </body>
             )
 
 }
