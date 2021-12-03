@@ -11,17 +11,19 @@ import AddIcon from '@mui/icons-material/Add';
 import ForumIcon from '@mui/icons-material/Forum';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useAuth } from './AuthContexts';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
+import { getAuth, signOut } from 'firebase/auth';
+import { auth } from './firebase';
+import { useAuth } from './AuthContexts';
 
 
 
 const Header: React.FC = function () {
 
-    const currentUser  = useAuth();
+    //Can be set globally Later   
 
+    const { logout } = useAuth()
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -33,7 +35,7 @@ const Header: React.FC = function () {
     };
 
     const handleSignOut = () => {
-        logout();
+        logout()
         setAnchorEl(null);
     }
 
@@ -88,7 +90,7 @@ const Header: React.FC = function () {
             <div className={styles.header__right}>
                 <div className={styles.header__info}>
                     <Avatar />
-                    <h4>{currentUser.currentUser}</h4>
+                    <h4>G</h4>
                 </div>
 
                 <IconButton>

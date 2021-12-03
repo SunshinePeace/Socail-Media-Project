@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged} from "firebase/auth";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut} from "firebase/auth";
 import { useEffect, useState } from "react";
 
 
@@ -20,9 +20,10 @@ const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider(); // Google Login 
 
 
+
 // Email and Password Login 
 
-export {auth, provider};
+export { auth, provider};
 export default database;
 
 

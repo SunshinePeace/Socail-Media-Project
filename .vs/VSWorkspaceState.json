@@ -3,8 +3,9 @@
     "",
     "\\pages",
     "\\pages\\Components",
-    "\\pages\\Components\\Useless"
+    "\\pages\\Components\\Utils",
+    "\\styles"
   ],
-  "SelectedNode": "\\pages\\index.tsx",
+  "SelectedNode": "\\pages\\Components\\Utils\\Error.tsx",
   "PreviewInSolutionExplorer": false
 }

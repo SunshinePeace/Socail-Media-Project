@@ -1,14 +1,11 @@
 import { Button, Link } from '@mui/material';
 import { TextField } from '@mui/material';
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/Home.module.css'
-import { signin, signup } from "./AuthContexts";
 import ErrorText from './Utils/Error';
 import logging from './Utils/logging';
-import { BrowserRouter as Router  } from 'react-router-dom';
-import SignUp from './SignUp';
-import { useStateValue } from './Useless/StateProvider';
-import { actionTypes } from './Useless/Reducer';
+import { useAuth } from '../Components/AuthContexts'
 // import { useCookies } from 'react-cookie';
 
 
@@ -17,6 +14,8 @@ import { actionTypes } from './Useless/Reducer';
 const LoginPage: React.FC = function () {
 
 
+
+    const { login } = useAuth();
     const [authenticating, setAuthenticating] = useState<boolean>(false);
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -24,13 +23,45 @@ const LoginPage: React.FC = function () {
    // const [cookies, setCookie] = useCookies(['user']);
 
 
-
-
-
-
-
-    const TraditionalSignIn = () => {
+    function handleSubmit() {
         if (error !== '') setError('')
+
+        setAuthenticating(true);
+        login(email, password)
+            .then(result => {
+                logging.info(result);
+                localStorage.setItem('Email', JSON.stringify(email));
+
+
+
+            })
+            .catch(error => {
+                logging.error(error)
+                setAuthenticating(false)
+                setError("Unable To Sign In. Please try it later") // More Command
+
+            });
+
+
+        
+
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*if (error !== '') setError('')
         
         setAuthenticating(true);
         signin(email, password)
@@ -47,10 +78,9 @@ const LoginPage: React.FC = function () {
                 setError("Unable To Sign In. Please try it later") // More Command
 
             });
-    }
 
-
-
+*/
+    
     return (
 
             <div className={styles.loginpage}>
@@ -81,8 +111,8 @@ const LoginPage: React.FC = function () {
             <Button
                 disabled={authenticating}
                 color="secondary"
-                onClick={() => TraditionalSignIn()}
-                href = "/"
+                onClick={() => handleSubmit()}
+                
             >
                 Sign In
             </Button>

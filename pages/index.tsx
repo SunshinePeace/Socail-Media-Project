@@ -1,37 +1,25 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
-import AuthContextProvider, { useAuth } from './Components/AuthContexts'
 import Feed from './Components/Feed'
 import Header from './Components/Header'
 import Login from './Components/Login'
 import SideBar from './Components/SideBar'
 import Widgets from './Components/Widgets'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import { collection, getDocs } from "firebase/firestore";
-import { StateProvider, useStateValue } from './Components/Useless/StateProvider'
-import reducer, { initialState } from './Components/Useless/Reducer'
+import { useAuth } from './Components/AuthContexts'
+import LoginPage from './Components/LoginPage'
+
 
 export default function Home() {
 
+    // const {currentUser} = useAuth(); // CurrentUser === user
+    const { currentUser } = useAuth()
 
-    
-    const  currentUser  = useAuth(); // CurrentUser === user
-
-
-
-    return (
-
-
-            
+    return (        
       <div className={styles.app}>
       <Head>
         <title>Facebook 2.0</title>
             </Head>
-
-            <React.StrictMode>
-                <StateProvider initialState={initialState} reducer={reducer}>
-                    
 
             {!currentUser ? (<Login />)
                 : (
@@ -47,10 +35,14 @@ export default function Home() {
                             </>
                                
                 
-                        )}
-                </StateProvider>
+                            )}
+
+            
+             </div>
                     
-            </React.StrictMode>, document.getElementById('root')
-    </div>
-  )
+
+    )
+
+   
 }
+

@@ -1,74 +1,63 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import { createContext, useContext, useEffect, useState } from 'react';
-import database, { auth } from './firebase'
+import { Unsubscribe } from "@mui/icons-material";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useContext, useEffect } from "react";
+import { createContext, useState } from "react";
+import { auth } from "./firebase";
+
+
 
 const AuthContext = createContext({
-    currentUser: null // Created 
+    currentUser: null,
+    register: () => Promise,
+    login: () => Promise,
+    logout: () => Promise
 })
 
-export const useSession = () => {
 
-    const [state, setState] = useState(() => {
-        const currentUser = auth.currentUser
-        return {
-            initializing: !currentUser,
-            currentUser,
-
-        }
-
-
-
-    })
-
-    function onChange(currentUser) {
-        setState({ initializing: false, currentUser })
-    }
-
-
-    useEffect(() => {
-        const unsub = onAuthStateChanged(auth, user => onChange)       
-        return unsub
-
-    }, [])
-
-    return state
-
-}
-
+export const useAuth = () => useContext(AuthContext)
 
 
 
 export default function AuthContextProvider({ children }) {
+    const [currentUser, setCurrentUser] = useState(null)
 
-    const { initializing, currentUser } = useSession()
-    //const getEmail = localStorage.getItem('email');
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, user => {
+            setCurrentUser(user)
 
-    //const GetUser = doc(database, "user", getEmail);
-    //const UserSnap = getDoc(GetUser);
-    function logout() {
-        return signOut(auth).then(() => {
-
-        }).catch((error) => {
-            console.log(error)
         })
+    return () => {
+        unsubscribe()
     }
-    const value = { currentUser, logout }
 
-    
-    return <AuthContext.Provider value={value}>
-        {children}
-    </AuthContext.Provider>
-}
 
-export const useAuth = () => useContext(AuthContext)
+    },[])
 
-export function signup(email, password) {
-    return createUserWithEmailAndPassword(auth,email,password)
-}
+    function register(email, password) {
+        return createUserWithEmailAndPassword(auth,email,password)
+    }
 
-export function signin(email, password) {
-    return signInWithEmailAndPassword(auth,email,password)
+    function login(email, password) {
+        return signInWithEmailAndPassword(auth,email,password)
+    }
+
+    function logout() {
+        return signOut(auth)
+    }
+
+    const value = {
+        currentUser,
+        register,
+        login,
+        logout
+    }
+
+    return (
+        <AuthContext.Provider value={value}>
+            {children}
+            </AuthContext.Provider>
+        
+        )
 }
 
 

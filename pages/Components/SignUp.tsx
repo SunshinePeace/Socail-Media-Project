@@ -4,12 +4,12 @@ import React, { useRef } from 'react';
 import { useState } from 'react';
 import styles from '../../styles/Home.module.css'
 import { signup } from "./AuthContexts";
-import { useNavigate } from "react-router-dom"
 import logging from './Utils/logging';
 import { Link } from '@mui/material';
 import ErrorText from './Utils/Error';
 import { addDoc, collection, doc } from 'firebase/firestore';
 import database, { auth } from './firebase';
+import { useAuth } from './Utils/UserState';
 
 
 const SignUp: React.FC = function () {
@@ -23,6 +23,10 @@ const SignUp: React.FC = function () {
 
 
     const TraditionalSignUp = () => {
+
+
+
+        /*
         if (error !== "") setError('');
 
         setRegistering(true)
@@ -66,7 +70,7 @@ const SignUp: React.FC = function () {
 
 
 
-
+        */
     }       
 
 
