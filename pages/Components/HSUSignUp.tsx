@@ -5,9 +5,6 @@ import { useState } from 'react';
 import styles from '../../styles/Home.module.css'
 import { useAuth } from "./AuthContexts";
 import logging from './Utils/logging';
-import { TextField } from '@mui/material';
-import { Link } from '@mui/material';
-import ErrorText from './Utils/Error';
 import { Link } from '@mui/material';
 import ErrorText from './Utils/Error';
 import { addDoc, collection, doc } from 'firebase/firestore';
