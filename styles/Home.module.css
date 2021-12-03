@@ -462,12 +462,49 @@
     flex-direction: column;
 }
 
+.loginbody {
+    display: flex;
+    min-height: 100%;
+    background-image: url("/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.loginpage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.flexbox {
+    display: flex;
+    border-radius: 12px 12px 12px 12px;
+    flex-direction: column;
+    background: white;
+    width: 550px;
+    height: 550px;
+    align-items: center;
+    justify-content: center;
+}
 
 
+    .loginpage_email {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.loginpage_pw {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 
-
-
+.png {
+    width: 250px;
+    height: 200px;
+}
 
 
 
