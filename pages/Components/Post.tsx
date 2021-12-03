@@ -10,13 +10,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 function Post({profilePic, image, username , timestamp, message}) {
 
 
+
     return (
         <div className={styles.post}>
             <div className={styles.post__top}>
                 <Avatar src={profilePic} className={styles.post__avatar} />
                 <div className={styles.post__topInfo}>
                     <h3>{username}</h3>
-                    <p>{timestamp}</p>
+                    <p>{new Date(timestamp.seconds * 1000).toLocaleTimeString() + ` at ` + new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000).toDateString()}</p>
                     </div>
 
             </div>
