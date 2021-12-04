@@ -21,28 +21,35 @@ const Login: React.FC = function () {
 
 
     return (
-        <div className={styles.login}>
-            <div>
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1024px-2021_Facebook_icon.svg.png"
 
-                    alt=""
-                />
+        <body className={styles.loginbody}>
 
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/2560px-Facebook_Logo_%282019%29.svg.png"
+            <div className={styles.loginpage}>
 
-                    alt=""
-                />
+                <div className={styles.flexbox}>
 
+                    <div>
+                        <img src="/Dead.png" width="150" height="150" alt="" />
+                    </div>
 
-            </div>
+                    <h3 className={styles.word}>
+                        Opps, there is something wrong
+                    </h3>
 
-            <Button type="submit" onClick={signIn} href="../Components/LoginPage">
-                Sign In
-            </Button>
-
+                    <p className={styles.word}>
+                        Please Try Again
+                    </p>
+                    <Button className={styles.loginpage_btn} type="submit" onClick={signIn} href="../Components/LoginPage">
+                        Back To Sign In
+                    </Button>
+                </div>
+            
         </div>
+
+        </body>
+
+
+
         
         )
 
