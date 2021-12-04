@@ -29,16 +29,13 @@ const Login: React.FC = function () {
                 <div className={styles.flexbox}>
 
                     <div>
-                        <img src="/Dead.png" width="150" height="150" alt="" />
+                        <img src="/Logout.png" width="150" height="150" alt="" />
                     </div>
 
                     <h3 className={styles.word}>
-                        Opps, there is something wrong
+                        Logout Successful
                     </h3>
 
-                    <p className={styles.word}>
-                        Please Try Again
-                    </p>
                     <Button className={styles.loginpage_btn} type="submit" onClick={signIn} href="../Components/LoginPage">
                         Back To Sign In
                     </Button>
