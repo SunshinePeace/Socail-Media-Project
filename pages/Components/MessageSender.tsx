@@ -8,8 +8,8 @@ import { useAuth } from './AuthContexts';
 import Hidden from '@mui/material/Hidden';
 import database, { storage } from './firebase';
 import { addDoc, collection, serverTimestamp, setDoc, doc } from 'firebase/firestore';
-import { getDownloadURL, ref, uploadBytes, uploadBytesResumable, uploadString } from 'firebase/storage';
-import { Remove } from '@mui/icons-material';
+import { getDownloadURL, ref, uploadBytes, uploadBytesResumable, uploadString } from '@firebase/storage';
+import { Remove, UploadFile } from '@mui/icons-material';
 
 
 
@@ -18,7 +18,6 @@ const MessageSender: React.FC = function () {
     const [input, setInput] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const { currentUser } = useAuth()
-
     const filePickerRef = useRef(null)
     const [imageToPost, setImageToPost] = useState(null);
 
@@ -33,30 +32,22 @@ const MessageSender: React.FC = function () {
                 profilePic: currentUser.photoURL,
                 username: currentUser.displayName,
                 image: imageUrl
-            }).then(docm => {
+            }).then(async docm => {
                 if (imageToPost) {
-                    const a = ref(storage, (`posts/ ${docm.id}`))
-                    const upload = uploadBytesResumable(a, imageToPost);
+
+
+
+                    const a = ref(storage, (`posts/ ${docm.id}`));
+                    const uploadTask = await uploadString(a, imageToPost, 'data_url');
+                    const url = await getDownloadURL(uploadTask.ref);
+                    await setDoc(doc(database, "posts", docm.id), { image: url }, { merge: true });
+                }
 
                     removeImage();
-                    upload.on('state_changed', null,
-                        (error) => {
-                            alert(error)
-                        },
-
-                        () => {
-                            getDownloadURL(upload.snapshot.ref).then((URL) => {
-                                setDoc(doc(database, "posts", docm.id), { image: URL }, { merge: true })
-                            })
-                        }
-                    )
-
-                    
                 }
 
 
-
-            })
+                )
         }
 
         else {
@@ -64,6 +55,9 @@ const MessageSender: React.FC = function () {
         }
         setInput("");
         setImageUrl("");
+        
+
+
     }
 
     const addImagePost = (e) => {
@@ -82,17 +76,6 @@ const MessageSender: React.FC = function () {
     const removeImage = () => {
         setImageToPost(null);
     }
-
-
-
-
-
-    
-
-
-
-
-
 
 
     return (
@@ -126,9 +109,6 @@ const MessageSender: React.FC = function () {
                 </div>
                 
                 )}
-
-
-
 
 
             <div className={styles.MessageSender__bottom}>
