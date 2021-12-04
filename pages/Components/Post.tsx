@@ -17,7 +17,7 @@ function Post({profilePic, image, username , timestamp, message}) {
                 <Avatar src={profilePic} className={styles.post__avatar} />
                 <div className={styles.post__topInfo}>
                     <h3>{username}</h3>
-                    <p>{new Date(timestamp * 1000).toLocaleTimeString() + ` at ` + new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000).toLocaleDateString()}</p>
+                    <p>{new Date(timestamp * 1000).toLocaleTimeString()}</p>
                 </div>
 
 
