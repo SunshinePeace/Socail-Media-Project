@@ -17,9 +17,6 @@ const Login: React.FC = function () {
 
 
 
-    
-
-
     return (
 
         <body className={styles.loginbody}>

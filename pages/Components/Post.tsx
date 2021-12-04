@@ -6,6 +6,7 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { serverTimestamp } from 'firebase/firestore';
 
 function Post({profilePic, image, username , timestamp, message}) {
 
@@ -17,7 +18,7 @@ function Post({profilePic, image, username , timestamp, message}) {
                 <Avatar src={profilePic} className={styles.post__avatar} />
                 <div className={styles.post__topInfo}>
                     <h3>{username}</h3>
-                    <p>{new Date(timestamp * 1000).toLocaleTimeString()}</p>
+                    <p>{new Date(timestamp * 1000).toLocaleTimeString() + ` at ` + new Date(timestamp?.seconds * 1000).toLocaleDateString()}</p>
                 </div>
 
 
