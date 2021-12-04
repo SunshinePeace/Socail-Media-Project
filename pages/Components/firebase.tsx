@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signOut} from "firebase/auth";
 import { useEffect, useState } from "react";
+import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
@@ -18,12 +19,13 @@ const firebaseApp = initializeApp(firebaseConfig);
 const database = getFirestore(firebaseApp);
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider(); // Google Login 
+const storage = getStorage(firebaseApp);
 
 
 
 // Email and Password Login 
 
-export { auth, provider};
+export { auth, provider ,storage};
 export default database;
 
 

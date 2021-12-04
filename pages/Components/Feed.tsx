@@ -30,11 +30,6 @@ const Feed: React.FC = function () {
 
 
 
-
-
-
-
-
     return (
         <div className={styles.feed}>
             <StoryReel />

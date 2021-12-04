@@ -573,8 +573,31 @@
     margin-bottom: 10px;
 }
 
+.imageToPost {
+    display: flex;
+    flex-direction: column;
+    transition: transform 100ms ease-in;
+    cursor: pointer;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 
+.imageToPost:hover {
+    transform:scale(1.05)
+}
+
+.imageToPost__Image{
+    object-fit:contain;
+}
+
+.imageToPost__Text {
+    font-size: x-small;
+    color: #FF6347;
+    text-align:center;
+}
 
 
 
