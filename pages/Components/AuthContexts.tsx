@@ -61,10 +61,6 @@ export default function AuthContextProvider({ children }) {
 
 
 
-
-
-
-
     const value = {
         currentUser,
         register,

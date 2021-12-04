@@ -15,8 +15,11 @@ const UpdateInformation: React.FC = function () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
+    const [loading, setLoading] = useState<boolean>(false)
 
     const update = () => {
+
+        setLoading(true)
 
         updateProfile(currentUser, {
 
@@ -28,13 +31,18 @@ const UpdateInformation: React.FC = function () {
                 Photourl: photo
             })
             console.log(result)
+
         }).catch((error) => {
             console.log(error)
+            setLoading(false)
         })
     }
 
     const force = []
     const Edit = () => {
+
+        setLoading(true)
+
         if (email !== currentUser.email) {
             force.push(changeEmail(email))
         }
@@ -54,6 +62,7 @@ const UpdateInformation: React.FC = function () {
             console.log(result)
         }).catch((error) => {
             console.log(error)
+            setLoading(false)
         })
 
 
@@ -71,21 +80,19 @@ const UpdateInformation: React.FC = function () {
                 <h1>Personal Information</h1>
                 <TextField variant="standard" value={username} placeholder="Enter Username" onChange={x => setusername(x.target.value)} />
                 <TextField variant="standard" value={photo} placeholder="PhotoURL(Leave it if you do not hace)" onChange={x => setphoto(x.target.value)} />
-                <Button onClick={update}> Update Personal Information </Button>
+                <Button onClick={update} disabled={loading}> Update Personal Information </Button>
 
                 <h2>Login Information</h2>
                 <TextField variant="standard" value={email} type="email" placeholder="Enter new Email Address" onChange={x => setEmail(x.target.value)} />
                 <TextField variant="standard" value={password} type="password" placeholder="Leave blank if it is same" onChange={x => setPassword(x.target.value)} />
                 <TextField variant="standard" value={confirm} type="password" placeholder="Leave blank if it is same" onChange={x => setConfirm(x.target.value)} />
-                <Button onClick={Edit}> Update Login Information </Button>
+                <Button onClick={Edit} disabled={loading}> Update Login Information </Button>
 
 
             </div>
         </div>
 
 
-
-        
         )
 }
 

@@ -28,9 +28,6 @@ const HSUSignUp: React.FC = function () {
 
     const TraditionalSignUp = () => {
 
-
-
-
         if (error !== "") setError('');
 
 
@@ -167,15 +164,12 @@ const HSUSignUp: React.FC = function () {
                             disabled={registering}
                             color="secondary"
                             onClick={() => TraditionalSignUp()}
-                            href="../Components/LoginPage"
                         >
                             Sign Up
                         </Button>
 
                         <Button
-                            disabled={registering}
                             color="secondary"
-                            onClick={() => TraditionalSignUp()}
                             href="../Components/Choice"
                         >
                             Back

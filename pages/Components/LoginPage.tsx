@@ -10,9 +10,6 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from './firebase';
 // import { useCookies } from 'react-cookie';
 
-
-
-
 const LoginPage: React.FC = function () {
 
 
@@ -43,10 +40,8 @@ const LoginPage: React.FC = function () {
             .then(result => {
 
                 logging.info(result);
+                localStorage.setItem('Email', JSON.stringify(email));
                 
-
-
-
             })
             .catch(error => {
                 logging.error(error)
@@ -94,7 +89,6 @@ const LoginPage: React.FC = function () {
                         disabled={authenticating}
                         color="secondary"
                         onClick={() => TraditionalSignIn()}
-                        href="/"
                     >
                         Sign In
                     </Button>
@@ -111,7 +105,7 @@ const LoginPage: React.FC = function () {
             </div>
         </body>
 
-        
+
 
     )
 }

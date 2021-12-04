@@ -23,11 +23,7 @@ const SignUp: React.FC = function () {
 
     const TraditionalSignUp = () => {
 
-
-
-        
         if (error !== "") setError('');
-
 
         if (password !== confirm) {
 
@@ -36,20 +32,16 @@ const SignUp: React.FC = function () {
 
         else {
             setRegistering(true)
-
             register(email, password)
-                .then(result => {
+            .then(result => {
                     addDoc(collection(database, 'Users'), {
                         UserName: user,
                         EmailAddress: email,
                         Password: password
 
                     });
-
+                 
                     logging.info(result)
-
-
-
 
                 })
                 .catch(error => {
@@ -75,14 +67,6 @@ const SignUp: React.FC = function () {
                 })
         }
         }
-
-
-
-  
-            
-            
-           
-
 
 
     return (
@@ -136,18 +120,16 @@ const SignUp: React.FC = function () {
 
                     <div className={styles.loginpage_btn}>
                         <Button
+
                             disabled={registering}
                             color="secondary"
                             onClick={() => TraditionalSignUp()}
-                            href="../Components/LoginPage"
                         >
                             Sign Up
                         </Button>
 
                         <Button
-                            disabled={registering}
                             color="secondary"
-                            onClick={() => TraditionalSignUp()}
                             href="../Components/Choice"
                         >
                             Back
