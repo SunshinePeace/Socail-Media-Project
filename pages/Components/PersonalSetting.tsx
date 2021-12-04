@@ -28,8 +28,17 @@ const PersonalSetting: React.FC = function () {
                                     Delete Accounts
                                 </Button>
                             </div>
+                            <Button
+                                className={styles.word}
+                                color="secondary"
+                                href=".."
+                            >
+                                Back
+                            </Button>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </body>
