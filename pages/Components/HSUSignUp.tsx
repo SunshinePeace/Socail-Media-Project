@@ -162,14 +162,26 @@ const HSUSignUp: React.FC = function () {
                             variant="standard" />
                     </div>
 
-                    <Button
-                        disabled={registering}
-                        color="secondary"
-                        onClick={() => TraditionalSignUp()}
-                        href="../Components/LoginPage"
-                    >
-                        Sign Up
-                    </Button>
+                    <div className={styles.loginpage_btn}>
+                        <Button
+                            disabled={registering}
+                            color="secondary"
+                            onClick={() => TraditionalSignUp()}
+                            href="../Components/LoginPage"
+                        >
+                            Sign Up
+                        </Button>
+
+                        <Button
+                            disabled={registering}
+                            color="secondary"
+                            onClick={() => TraditionalSignUp()}
+                            href="../Components/Choice"
+                        >
+                            Back
+                        </Button>
+
+                    </div>
                     <small>
                         <p className='m-1 text-center'>Already have an account?
                             <Link href="../Components/LoginPage"> Sign In </Link>
