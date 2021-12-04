@@ -6,7 +6,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import StorefrontOutlinedIcon from '@mui/icons-material/Storefront';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
-import { Avatar, IconButton } from '@mui/material';
+import { Avatar, IconButton, Link } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ForumIcon from '@mui/icons-material/Forum';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
@@ -16,6 +16,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { getAuth, signOut } from 'firebase/auth';
 import { auth } from './firebase';
 import { useAuth } from './AuthContexts';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 
@@ -38,6 +40,8 @@ const Header: React.FC = function () {
         logout()
         setAnchorEl(null);
     }
+
+    const preventDefault = event => event.preventDefault();
 
 
     const [active, setActive] = React.useState(false);
@@ -100,6 +104,10 @@ const Header: React.FC = function () {
                     <NotificationsActiveIcon />
                 </IconButton>
 
+                <IconButton href= "../Components/PersonalSetting">
+                    <SettingsIcon color="error" />
+                </IconButton>
+
                 <IconButton
                     id = 'basic-button'
                     aria-controls="basic-menu"
@@ -117,9 +125,20 @@ const Header: React.FC = function () {
                     MenuListProps={{
                         'aria-labelledby': 'basic-button',
                     }}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'right',
+                    }}
                 >
-                    <MenuItem onClick={handleClose}>Setting</MenuItem>
-                    <MenuItem onClick={handleSignOut}>Logout</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <SettingsIcon />
+                            Setting</MenuItem>
+                        
+
+
+                    <MenuItem onClick={handleSignOut}>
+                        <LogoutIcon />
+                        Logout</MenuItem>
                 </Menu>
 
 

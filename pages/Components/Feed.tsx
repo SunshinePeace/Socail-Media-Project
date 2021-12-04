@@ -1,5 +1,7 @@
-import React from 'react';
+import { collection, onSnapshot, orderBy } from '@firebase/firestore';
+import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Home.module.css'
+import database from './firebase';
 import MessageSender from './MessageSender';
 import Post from './Post';
 import StoryReel from './StoryReel';
@@ -7,12 +9,43 @@ import StoryReel from './StoryReel';
 
 const Feed: React.FC = function () {
 
+    const [posts, setPosts] = useState([])
+
+    console.log(posts)
+
+    useEffect(
+        () =>
+            onSnapshot(collection(database, "posts"), (snapshot) =>
+                setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }), orderBy("timestamp", "desc")))
+
+            ),
+        []
+
+
+    )
+
+
 
 
     return (
         <div className={styles.feed}>
             <StoryReel />
             <MessageSender />
+
+
+
+            {posts.map((post) => (
+                <Post
+                    key={post.id}
+                    profilePic={post.profilePic}
+                    message={post.message}
+                    timestamp={post.timestamp}
+                    username={post.username}
+                    image={post.image}
+
+                />
+                ))}
+
 
             <Post
                 profilePic="https://coolthemestores.com/wp-content/uploads/2021/06/purple-wallpaper-background-1.jpg"              

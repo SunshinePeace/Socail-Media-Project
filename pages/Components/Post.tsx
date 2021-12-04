@@ -9,15 +9,17 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function Post({profilePic, image, username , timestamp, message}) {
 
-
+    //const result = Intl.DateTimeFormat('zh-HK', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(timestamp)
+    const mulliseconds = timestamp * 1000;
     return (
         <div className={styles.post}>
             <div className={styles.post__top}>
                 <Avatar src={profilePic} className={styles.post__avatar} />
                 <div className={styles.post__topInfo}>
                     <h3>{username}</h3>
-                    <p>{timestamp}</p>
-                    </div>
+                    <p>{new Date(timestamp * 1000).toLocaleTimeString() + ` at ` + new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000).toLocaleDateString()}</p>
+                </div>
+
 
             </div>
 
