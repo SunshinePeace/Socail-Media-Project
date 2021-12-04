@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import { useAuth } from './AuthContexts';
+import styles from '../../styles/Home.module.css'
 
 
 const PersonalSetting: React.FC = function () {
@@ -9,22 +10,29 @@ const PersonalSetting: React.FC = function () {
 
 
     return (
-        
-        <div>
-            <Button href = "../Components/UpdateInformation" color="secondary">
-                Update Information
-            </Button>
-            <div>
-                <Button href="../Components/ForgetPassword" color="success">
-                    Reset Password
-                </Button>
-                <div>
-                    <Button color="error">
-                        Delete Accounts
-                    </Button>
+        <body className={styles.loginbody}>
+
+            <div className={styles.loginpage}>
+
+                <div className={styles.flexbox}>
+                    <div>
+                        <Button className={styles.loginpage_pw} href = "../Components/UpdateInformation" color="secondary">
+                            Update Information
+                        </Button>
+                        <div>
+                            <Button className={styles.loginpage_pw} href="../Components/ForgetPassword" color="success">
+                                Reset Password
+                            </Button>
+                            <div>
+                                <Button className={styles.loginpage_pw} color="error">
+                                    Delete Accounts
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </body>
         
         
         )
