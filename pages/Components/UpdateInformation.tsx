@@ -4,6 +4,7 @@ import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { useAuth } from './AuthContexts'
 import database from './firebase'
+import styles from '../../styles/Home.module.css'
 
 
 
@@ -75,23 +76,35 @@ const UpdateInformation: React.FC = function () {
     
 
     return (
-        <div>
-            <div>
-                <h1>Personal Information</h1>
-                <TextField variant="standard" value={username} placeholder="Enter Username" onChange={x => setusername(x.target.value)} />
-                <TextField variant="standard" value={photo} placeholder="PhotoURL(Leave it if you do not hace)" onChange={x => setphoto(x.target.value)} />
-                <Button onClick={update} disabled={loading}> Update Personal Information </Button>
 
-                <h2>Login Information</h2>
-                <TextField variant="standard" value={email} type="email" placeholder="Enter new Email Address" onChange={x => setEmail(x.target.value)} />
-                <TextField variant="standard" value={password} type="password" placeholder="Leave blank if it is same" onChange={x => setPassword(x.target.value)} />
-                <TextField variant="standard" value={confirm} type="password" placeholder="Leave blank if it is same" onChange={x => setConfirm(x.target.value)} />
-                <Button onClick={Edit} disabled={loading}> Update Login Information </Button>
+        <body className={styles.loginbody}>
 
+            <div className={styles.loginpage}>
+
+                <div className={styles.flexbox}>
+                            <h2 className={styles.word}>Personal Information</h2>
+
+                            <TextField className={styles.word} variant="standard" value={username} placeholder="Enter Username" onChange={x => setusername(x.target.value)} />
+                            <TextField className={styles.word} variant="standard" value={photo} placeholder="PhotoURL(Leave it if you do not hace)" onChange={x => setphoto(x.target.value)} />
+                            <Button className={styles.word} onClick={update} disabled={loading}> Update Personal Information </Button>
+
+                            <h2 className={styles.word}>Login Information</h2>
+                            <TextField className={styles.word} variant="standard" value={email} type="email" placeholder="Enter new Email Address" onChange={x => setEmail(x.target.value)} />
+                            <TextField className={styles.word} variant="standard" value={password} type="password" placeholder="Leave blank if it is same" onChange={x => setPassword(x.target.value)} />
+                            <TextField className={styles.word} variant="standard" value={confirm} type="password" placeholder="Leave blank if it is same" onChange={x => setConfirm(x.target.value)} />
+                            <Button className={styles.word} onClick={Edit} disabled={loading}> Update Login Information </Button>
+                            <Button
+                                className={styles.word}
+                                color="secondary"
+                                href="../Components/PersonalSetting"
+                            >
+                                Back
+                            </Button>
+                </div>
 
             </div>
-        </div>
 
+        </body>
 
         )
 }

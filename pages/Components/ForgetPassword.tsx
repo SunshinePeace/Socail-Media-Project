@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material';
 import { tryGetPreviewData } from 'next/dist/server/api-utils';
 import React, { useState } from 'react';
 import { useAuth } from './AuthContexts';
-
+import styles from '../../styles/Home.module.css'
 
 
 
@@ -33,21 +33,35 @@ const ForgetPassword: React.FC = function () {
 
     return (
         
-        <div>
-            <p>Reset Password</p>
-            <TextField type="email" 
-                value={email} 
-                id="email"
-                variant="standard"
-                placeholder="Enter Email Address"
-                onChange={x => setEmail(x.target.value)} />
-            <div>
-                <Button type="submit" onSubmit={handlereset}> Reset Password </Button>
+        <body className={styles.loginbody}>
+
+            <div className={styles.loginpage}>
+
+                <div className={styles.flexbox}>
+
+                    <p className={styles.word}>Reset Password</p>
+                    <TextField type="email"
+                        className={styles.word}
+                        value={email}
+                        id="email"
+                        variant="standard"
+                        placeholder="Enter Email Address"
+                            onChange={x => setEmail(x.target.value)} />
+                    <Button className={styles.word} type="submit" onSubmit={handlereset}> Reset Password </Button>
+                    <a className={styles.word} href="../Components/LoginPage">Login</a>
+                    <Button
+                        className={styles.word}
+                        color="secondary"
+                        href="../Components/PersonalSetting"
+                    >
+                        Back
+                    </Button>
+
+                </div>
+
             </div>
-            <a href="../Components/LoginPage">Login</a>
-        </div>
-        
-        
+
+        </body>
         )
 }
 
