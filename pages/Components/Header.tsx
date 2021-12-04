@@ -49,11 +49,9 @@ const Header: React.FC = function () {
 
         <div className={styles.header}>
             <div className={styles.header__left}>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt =""/>
-            
                 <div className={styles.header__input}>
                 <SearchIcon />
-                <input type="text" placeholder="Search Facebook" />
+                <input type="text" placeholder="Search Message" />
                 </div>
             </div>
 
