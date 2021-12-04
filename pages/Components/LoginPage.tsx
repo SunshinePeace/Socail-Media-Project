@@ -45,7 +45,7 @@ const LoginPage: React.FC = function () {
             })
             .catch(error => {
                 logging.error(error)
-                setAuthenticating(false)
+                setAuthenticating(true)
                 setError("Unable To Sign In. Please try it later") // More Command
 
             });
@@ -91,6 +91,12 @@ const LoginPage: React.FC = function () {
                         onClick={() => TraditionalSignIn()}
                     >
                         Sign In
+                    </Button>
+                    <Button
+                        color="secondary"
+                        href=".."
+                    >
+                        Back To Main Page
                     </Button>
                     <p>Do not have account?
                         <Link href="../Components/Choice"> Sign Up </Link>
