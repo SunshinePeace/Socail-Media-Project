@@ -1,4 +1,4 @@
-import { collection, onSnapshot, orderBy } from '@firebase/firestore';
+import { collection, onSnapshot, orderBy, query } from '@firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Home.module.css'
 import database from './firebase';
@@ -11,18 +11,26 @@ const Feed: React.FC = function () {
 
     const [posts, setPosts] = useState([])
 
-    console.log(posts)
 
     useEffect(
-        () =>
-            onSnapshot(collection(database, "posts"), (snapshot) =>
-                setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }), orderBy("timestamp", "desc")))
+        () => {
+            const collectionRef = collection(database, "posts")
+            const q = query(collectionRef, orderBy("timestamp", "desc"))
+                onSnapshot(q, (snapshot) =>
+                setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
 
-            ),
+            )
+        },
         []
 
 
     )
+
+
+
+
+
+
 
 
 

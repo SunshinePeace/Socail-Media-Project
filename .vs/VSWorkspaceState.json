@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\pages",
-    "\\pages\\Components",
-    "\\pages\\Components\\Utils",
-    "\\styles"
+    "\\pages\\Components"
   ],
-  "SelectedNode": "\\pages\\Components\\Utils\\Error.tsx",
+  "SelectedNode": "\\pages\\Components\\Header.tsx",
   "PreviewInSolutionExplorer": false
 }
